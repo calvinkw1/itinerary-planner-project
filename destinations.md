@@ -2,3 +2,7 @@
 - Austin, TX
 - Foster City, CA
 - Perth, AU
+- Singapore, SG
+- Taipei, TW
+- Shanghai, CN
+- Tokyo, JP
