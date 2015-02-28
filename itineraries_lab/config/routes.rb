@@ -1,10 +1,23 @@
 Rails.application.routes.draw do
   
-  root 'access#index'
+  root 'site#index'
+
+  get '/login', to: "users#login", as: 'login'
+
+  get '/signup', to: "users#signup", as: 'signup'
+
+  post '/login', to: "users#login"
+
+  post '/signup', to: "users#create"
+
+  get '/logout', to: "users#logout"
+
   resources :users
+
   resources :itineraries
-  resources :destinations
   
+  resources :destinations
+
 
 #           Prefix Verb   URI Pattern                      Controller#Action
 #             root GET    /                                access#index
