@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:edit, :show, :update, :destroy, :add_itinerary]
-
+  
   def index
     @users = User.all
   end
@@ -13,6 +13,10 @@ class UsersController < ApplicationController
     else
       render :signup
     end
+  end
+
+  def signup
+    @user = User.new
   end
 
   def signup
@@ -33,6 +37,16 @@ class UsersController < ApplicationController
     else
       session[:user_id] = authorized_user.id
       redirect_to user_path session[:user_id]
+    end
+  end
+
+  def create
+    @user = User.create user_params
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to user_path session[:user_id]
+    else
+      render :signup
     end
   end
 
