@@ -1,2 +1,29 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h1>Edit User <%= @user.id %></h1>
+
+<%= simple_form_for(@user) do |f|%>
+
+  <p>
+    <%= f.input(:first_name) %>
+  </p>
+
+  <p>
+    <%= f.input(:last_name) %>
+  </p>
+
+  <p>
+    <%= f.input(:username) %>
+  </p>
+
+  <p>
+    <%= f.button(:submit, "Submit changes", class: "btn btn-primary") %>
+  </p>
+
+<% end %>
+
+<p>
+  <%= button_to "Delete user", user_path(@user), :method => :delete %>
+</p>
+
+<p>
+  <%= link_to "Go back", root_path %>
+</p>
