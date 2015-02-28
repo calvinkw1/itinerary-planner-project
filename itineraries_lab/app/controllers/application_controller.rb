@@ -3,13 +3,13 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :confirm_logged_in
+  # before_action :confirm_logged_in
 
-  def confirm_logged_in
-    unless session[:user_id]
-      redirect_to login_path, alert: "Please log in"
-    end
-  end
+  # def confirm_logged_in
+  #   unless session[:user_id]
+  #     redirect_to login_path, alert: "Please log in"
+  #   end
+  # end
 
   # private
   #   def find_entity
