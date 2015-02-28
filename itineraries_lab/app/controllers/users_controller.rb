@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
   def show
     @itineraries = User.all - @user.itineraries
-    @comments = @user.comments
+    # @comments = @user.comments
   end
 
   def edit
