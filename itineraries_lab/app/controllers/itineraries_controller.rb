@@ -9,7 +9,7 @@ class ItinerariesController < ApplicationController
 
   def show
     @itinerary = Itinerary.find params[:id]
-    @destinations = Destination.all
+    @destinations = @itinerary.destinations
   end
 
   def edit
