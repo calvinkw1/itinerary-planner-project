@@ -1,2 +1,13 @@
-<h1>Itineraries#show</h1>
-<p>Find me in app/views/itineraries/show.html.erb</p>
+<h1>Viewing Itinerary for <%= @itinerary.name %></h1>
+
+<h3><%= @itinerary.origin %></h3>
+<h3><%= @itinerary.destination %></h3>
+
+<h4>Start Date: <%= @itinerary.start_date %></h4>
+<h4>End Date: <%= @itinerary.end_date %></h4>
+
+<h4>Destinations:</h4>
+
+<% @destinations.each do |destination| %>
+  <li><%= link_to destination.name, destination_path %></li>
+<% end %>
