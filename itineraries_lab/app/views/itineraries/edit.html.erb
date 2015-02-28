@@ -1,9 +1,26 @@
-<h1>Edit Itinerary</h1>
+<h1>Editing Itinerary for <%= @itinerary.name %></h1>
 
 <%= form_for @itinerary do |f| %>
+<p>
   <%= f.label :name %>
   <%= f.text_field :name, autofocus: true %>
-
+</p>
+<p>
+  <%= f.label :origin %>
+  <%= f.text_field :origin %>
+</p>
+<p>
+  <%= f.label :destination %>
+  <%= f.text_field :destination %>
+</p>
+<p>
+  <%= f.label :start_date %>
+  <%= f.text_field :start_date %>
+</p>
+<p>
+  <%= f.label :end_date %>
+  <%= f.text_field :end_date %>
+</p>
   <%= f.submit %>
 <% end %>
 

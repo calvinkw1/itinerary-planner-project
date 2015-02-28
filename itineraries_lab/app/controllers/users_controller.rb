@@ -54,14 +54,7 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
-  def add_itinerary
-    @user = User.find(params[:id])
-    itinerary = Itinerary.find(itinerary_params[:id])
-    unless @user.itineraries.include? itinerary
-      @user.itineraries << itinerary
-    end
-    redirect_to @user
-  end
+
 
   private
   def user_params

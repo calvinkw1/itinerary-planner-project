@@ -1,2 +1,33 @@
-<h1>Itineraries#new</h1>
-<p>Find me in app/views/itineraries/new.html.erb</p>
+<h1>Add Itinerary</h1>
+
+<%= form_for @itinerary do |f| %>
+<p>
+  <%= f.label :name %>
+  <%= f.text_field :name, autofocus: true %>
+</p>
+<p>
+  <%= f.label :origin %>
+  <%= f.text_field :origin %>
+</p>
+<p>
+  <%= f.label :destination %>
+  <%= f.text_field :destination %>
+</p>
+<p>
+  <%= f.label :start_date %>
+  <%= f.text_field :start_date %>
+</p>
+<p>
+  <%= f.label :end_date %>
+  <%= f.text_field :end_date %>
+</p>
+  <%= f.submit %>
+<% end %>
+
+<% if @itinerary.errors.any?%>
+  <% @itinerary.errors.full_messages.each do |error|%>
+    <p class="text-danger">
+      <%= error %>
+    </p>
+    <% end%>
+  <% end%>
