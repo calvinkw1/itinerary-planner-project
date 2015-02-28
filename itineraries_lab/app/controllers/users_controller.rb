@@ -19,10 +19,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def signup
-    @user = User.new
-  end
-
   def login
     if params[:username].present? && params[:password].present?
       found_user = User.find_by_username params[:username]
@@ -37,16 +33,6 @@ class UsersController < ApplicationController
     else
       session[:user_id] = authorized_user.id
       redirect_to user_path session[:user_id]
-    end
-  end
-
-  def create
-    @user = User.create user_params
-    if @user.save
-      session[:user_id] = @user.id
-      redirect_to user_path session[:user_id]
-    else
-      render :signup
     end
   end
 
