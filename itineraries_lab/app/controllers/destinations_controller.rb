@@ -1,7 +1,7 @@
 class DestinationsController < ApplicationController
   before_action :confirm_logged_in
-  before_action :find_itinerary, only: [:new, :create, :add_destination]
-  before_action :find_destination, only: [:creat, :show, :edit, :update, :destroy]
+  before_action :find_itinerary, only: [:new, :create]
+  before_action :find_destination, only: [:create, :show, :edit, :update, :destroy]
 
   def index
     @destination = Destination.all
@@ -12,30 +12,31 @@ class DestinationsController < ApplicationController
   end
 
   def create 
-    itinerary = Itinerary.find params[:id]
+    # itinerary = Itinerary.find params[:id]
     @destination = Destination.create destination_params
     if @destination.save
-      itinerary.destinations << @destination
+      @itinerary.destinations << @destination
       redirect_to itinerary_path(@itinerary)
     else
       render :new
     end
   end
 
-  def add_destination
-    # @itinerary = Itinerary.find (params[:id])
-    #   destination = Destination.find(destination_params[:id])
-    # @itinerary = Itinerary.find params[:id]
-    @destination = Destination.create(destination_params)
-    if @destination.save
-      redirect_to destination_path
-    else
-      render :new
-    end
-    Destination.create 
-  end
+  # def add_destination
+  #   # @itinerary = Itinerary.find (params[:id])
+  #   #   destination = Destination.find(destination_params[:id])
+  #   # @itinerary = Itinerary.find params[:id]
+  #   @destination = Destination.create(destination_params)
+  #   if @destination.save
+  #     redirect_to destination_path
+  #   else
+  #     render :new
+  #   end
+  #   Destination.create 
+  # end
 
   def show
+
       # @itinerary = Itinerary.find params[:id]
       @destination = Destination.find params[:id]
     # @destination = @itinerary.destination

@@ -1,21 +1,18 @@
 <h1><%= @destination.name %></h1>
 <hr>
 <h2><%= @destination.location %></h2>
-<h3><%= @destination.start_date.to_s(:long) %></h3>
-<h3><%= @destination.end_date.to_s(:long) %></h3>
+<h2><%= @destination.start_date.to_s(:long) %></h2>
+<h2><%= @destination.end_date.to_s(:long) %></h2>
 
 <p>
-  <%= link_to "Add a Destination", new_destination_path  %>
+  <%= link_to "Add a Destination", new_destination_path, class: "shadow"  %>
 </p>
-=======
-<h1>Destinations#show</h1>
 
+<p>
+  <%= link_to "Edit Destination", edit_destination_path(@destination), class: "shadow"  %>
+</p>
 
-<h1><%= @destination.name %></h1>
-<h2><%= @destination.location %></h2>
-<h2><%= @destination.start_date %></h2>
-<h2><%= @destination.end_date %></h2>
-
+<hr>
 <h3>Comments</h3>
 
 <% @comments.each do |comment| %>
