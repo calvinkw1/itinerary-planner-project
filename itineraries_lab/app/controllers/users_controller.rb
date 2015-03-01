@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :prevent_logged_in_signup, only: [:signup, :create]
   before_action :confirm_logged_in, only: [:index, :show, :edit, :update, :destroy]
   before_action :find_user, only: [:edit, :show, :update, :destroy, :add_itinerary]
 
@@ -63,6 +64,12 @@ class UsersController < ApplicationController
 
   def find_user
     @user = User.find(params[:id])
+  end
+
+  def prevent_logged_in_signup
+    if session[:user_id]
+      redirect_to user_path session[:user_id]
+    end
   end
 
 end
