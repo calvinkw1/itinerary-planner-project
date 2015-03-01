@@ -50,6 +50,7 @@ class DestinationsController < ApplicationController
       # @itinerary = Itinerary.find params[:id]
       @destination = Destination.find params[:id]
     # @destination = @itinerary.destination
+    @comments = @destination.comments
   end
 
   def edit
