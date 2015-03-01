@@ -1,8 +1,8 @@
 class DestinationsController < ApplicationController
   before_action :confirm_logged_in
   before_action :find_itinerary, only: [:new, :create, :add_destination, :destroy]
-  before_action :find_destination, only: [:show, :edit, :update, :destroy]
-
+  before_action :find_destination, only: [:show, :edit, :update, :destroy, :add_companion]
+  before_action :find_user, only: [:create]
 
   def index
     @destination = Destination.all
@@ -17,6 +17,7 @@ class DestinationsController < ApplicationController
     @destination = Destination.create destination_params
     if @destination.save
       @itinerary.destinations << @destination
+      @destination.users << @user
       redirect_to itinerary_path(@itinerary)
     else
       render :new
@@ -37,11 +38,19 @@ class DestinationsController < ApplicationController
   # end
 
   def show
-
-      # @itinerary = Itinerary.find params[:id]
-      @destination = Destination.find params[:id]
+    # @itinerary = Itinerary.find params[:id]
     # @destination = @itinerary.destination
+    @current_companions = @destination.users
+    @avail_companions = User.all - @current_companions
     @comments = @destination.comments
+  end
+
+  def add_companion
+    companion = User.find user_params[:id]
+    unless @destination.users.include? companion
+      @destination.users << companion
+    end
+    redirect_to destination_path
   end
 
   def edit
@@ -67,6 +76,13 @@ class DestinationsController < ApplicationController
    end
    def find_itinerary
     @itinerary = Itinerary.find(session[:itinerary_id]["id"])
+   end
+   def find_user
+    @user = User.find session[:user_id]
+   end
+
+   def user_params
+    params.require(:user).permit(:id, :first_name)
    end
 
   private

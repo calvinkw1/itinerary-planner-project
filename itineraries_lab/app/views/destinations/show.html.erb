@@ -12,6 +12,25 @@
   <%= link_to "Edit Destination", edit_destination_path(@destination), class: "shadow"  %>
 </p>
 
+<h3>Companions:</h3>
+
+<p>
+  <ul>
+  <% @current_companions.each do |companion| %>
+    <li><%= "#{companion.first_name} #{companion.last_name}" %></li>
+  <% end %>
+  </ul>
+</p>
+
+<p>Add a Companion:</p>
+
+<% unless @current_companions.empty? %>
+  <%= form_tag add_companion_path(@destination) %>
+    <%= collection_select :user, :id, @avail_companions, :id, :first_name %>
+    <%= submit_tag "Add" %>
+<% end %>
+
+
 <hr>
 <h3>Comments</h3>
 

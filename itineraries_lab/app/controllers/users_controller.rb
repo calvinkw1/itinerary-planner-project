@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :prevent_logged_in_signup, only: [:signup, :create]
+  before_action :prevent_logged_in_signup, only: [:signup, :create, :login]
   before_action :confirm_logged_in, only: [:index, :show, :edit, :update, :destroy]
   before_action :find_user, only: [:edit, :show, :update, :destroy, :add_itinerary]
 
