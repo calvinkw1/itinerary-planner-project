@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   
   resources :destinations
 
+  post '/itineraries/:id/users/new', to: 'itineraries#add_companion', as: :add_companion
+
 
 #           Prefix Verb   URI Pattern                      Controller#Action
 #             root GET    /                                site#index

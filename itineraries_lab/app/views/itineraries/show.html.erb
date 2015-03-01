@@ -41,6 +41,13 @@
       <% end %>
     </ul>
   </div>
+  <% unless @companions.empty? %>
+    <%= form_tag add_companion_path do %>
+      <%= collection_select :user, :id, @users, :id, :first_name %>
+      <%= submit_tag "Add" %>
+    <% end %>
+  <% end %>
+
 </div>
 
 
