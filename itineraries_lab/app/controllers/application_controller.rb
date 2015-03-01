@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+
+
   # private
   #   def find_entity
   #     params.each do |name, value|

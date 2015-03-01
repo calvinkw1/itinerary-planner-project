@@ -89,6 +89,7 @@
 </head>
 <body class="background container-fluid">
 
+<%= link_to "Log Out", logout_path, method: :delete, data: { confirm: "Are you sure?!"} %>
 
 <%= yield %>
 
