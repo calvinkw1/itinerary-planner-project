@@ -1,24 +1,37 @@
+<h1 class="googfont2">Trippin!</h1>
+<hr>
+<h4>Signed In As: <%= @user.username %>  </h4>
+<hr>
+
+<div class="row">
+
 <h1>Viewing Itinerary for <%= @itinerary.name %></h1>
-
+<hr>
+<div class="col-sm-4">
+<center>
 <h3><%= @itinerary.origin %></h3>
+<h2>To</h2>
 <h3><%= @itinerary.destination %></h3>
-
-<h4>Start Date: <%= @itinerary.start_date.to_s(:long) %></h4>
-<h4>End Date: <%= @itinerary.end_date.to_s(:long) %></h4>
-
-<h4>Destinations:</h4>
+</div>
+<div class="col-sm-4">
+<h3>Start Date: <%= @itinerary.start_date.to_s(:long) %></h3>
+<h3>End Date: <%= @itinerary.end_date.to_s(:long) %></h3>
+</div>
+<div class="col-sm-4">
+<h3>Destinations:</h3>
 
 <% @destinations.each do |destination| %>
-  <li><%= link_to destination.name, destination_path(destination) %></li>
+  <li class="larger"><%= link_to destination.name, destination_path(destination) %></li>
 <% end %>
+</div>
+</div>
+
 <br>
 <p>
-  <%= link_to "Add a destination", new_destination_path %>
+  <%= link_to "Add a destination", new_destination_path, class: "btn btn-success btn-lg"  %><%= link_to "Edit Itinerary", edit_itinerary_path, class: "btn btn-warning btn-lg"  %>
 </p>
+<hr>
 <p>
-  <%= link_to "Edit Itinerary", edit_itinerary_path %>
+  <%= link_to "Back to User", user_path(session[:user_id]), class: "btn btn-primary btn-lg"  %>
 </p>
-
-<p>
-  <%= link_to "Back to User", user_path(session[:user_id]) %>
-</p>
+</center>

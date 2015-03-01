@@ -22,6 +22,9 @@ class ItinerariesController < ApplicationController
   end
 
   def show
+    #for the signed in as header
+    @user = User.find session[:user_id]
+
     @itinerary = Itinerary.find params[:id]
     @destinations = @itinerary.destinations
   end

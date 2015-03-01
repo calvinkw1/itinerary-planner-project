@@ -16,8 +16,79 @@
   
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+
+             <!-- BEGINNING OF STYLE -->
+
+<style>
+/*SITE#INDEX PAGE*/
+  .background {
+    background:#51d380;
+  }   
+  .siteindex {
+    height: 500px;
+    background-image: url("/candice.png");
+    background-repeat: no-repeat;
+  }
+  .googfont {
+    font-family: 'Pacifico', cursive;
+    color: white !important;
+    font-size: 80px !important;
+    text-shadow:2px 2px 1px black, -2px -2px 1px black, -2px 2px 1px black, 2px -2px 1px black;
+    margin-bottom: 100px;
+  }
+  .pushs {
+    margin-bottom: -100px;
+  }
+
+  /*USERS#LOGIN*/ 
+  .loginbox {
+    border:5px inset #5073ba;
+    background: rgba(35, 133, 133, .6);
+    width: 60%;
+  } 
+  .shadow {
+    text-shadow:1px 1px 1px black, -1px -1px 1px black, -1px 1px 1px black, 1px -1px 1px black;
+    font-size: 22px;
+
+  }
+  .googfont2 {
+    font-family: 'Pacifico', cursive;
+    color: white !important;
+    font-size: 40px !important;
+    text-shadow:2px 2px 1px black, -2px -2px 1px black, -2px 2px 1px black, 2px -2px 1px black;
+    margin-bottom: 30px;
+  }
+
+  /*USERS#SIGNUP*/
+  .signupbox {
+    border:5px inset #5073ba;
+    background: rgba(35, 133, 133, .6);
+    width:60%;
+    padding-left:30px;
+  }
+  /*USERS#SHOW*/
+  .medfont {
+    font-size: 25px;
+  }
+  .lspacing {
+    letter-spacing: 3px;
+
+  }
+  /*ITINERARIES#SHOW*/
+  .larger {
+    font-size: 25px;
+  }
+  
+
+</style>
+
+                 <!-- END OF STYLE -->
+
 </head>
-<body>
+<body class="background container-fluid">
+
 
 <%= yield %>
 
