@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   get '/logout', to: "users#logout"
 
+  get '/destination/new', to: "destinations#new", as: 'newdest'
+
   resources :users
 
   resources :itineraries
