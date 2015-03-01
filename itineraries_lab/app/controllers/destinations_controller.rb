@@ -1,4 +1,5 @@
 class DestinationsController < ApplicationController
+  before_action :confirm_logged_in
   before_action :find_itinerary, only: [:new, :create, :add_destination]
   before_action :find_destination, only: [:creat, :show, :edit, :update, :destroy]
 

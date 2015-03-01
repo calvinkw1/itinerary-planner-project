@@ -1,4 +1,5 @@
 class ItinerariesController < ApplicationController
+  before_action :confirm_logged_in
   before_action :find_itinerary, only: [:show, :edit, :update, :destroy]
 
 

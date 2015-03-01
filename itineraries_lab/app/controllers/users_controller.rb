@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :confirm_logged_in, only: [:index, :show, :edit, :update, :destroy]
   before_action :find_user, only: [:edit, :show, :update, :destroy, :add_itinerary]
 
   def index

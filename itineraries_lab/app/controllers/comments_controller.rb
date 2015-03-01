@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :confirm_logged_in
+
   def create
     find_commentable.comments.build(comment_params).save
     redirect_to :back
