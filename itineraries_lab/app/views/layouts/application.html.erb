@@ -22,6 +22,43 @@
              <!-- BEGINNING OF STYLE -->
 
 <style>
+#navstyle {
+  background: transparent;
+  background-color: rgba(14, 14, 14, .2);
+  border-color: transparent;
+  text-shadow: 0 0 5px #FFF, 0 0 5px #FFF;
+  font-variant: small-caps;
+  letter-spacing: 3px;
+  color: white;
+  text-align: center;
+  font-size: 21px;
+  font-weight: bolder;
+  font-family: arial;
+  margin-bottom: 30px;
+}
+.fcolor {
+  color:  #2c73b0 !important;
+  text-shadow: 2px 2px 3px #21c2c1, 3px 3px 7px #FFF !important;
+}
+.fcolor:hover {
+  color:  white !important;
+  text-shadow: 2px 2px 5px #21c2c1, 5px 4px 6px #FFF !important;
+}
+.buttonmargin {
+  margin-left: 400px;
+}
+.push {/*THIS IS SO THINGS DONT END UP HIDDEN UNDER NAV*/
+  margin-top: 70px;
+}
+.googfont3 {
+    font-family: 'Pacifico', cursive;
+    color: white !important;
+    font-size: 20px !important;
+    text-shadow:2px 2px 1px black, -2px -2px 1px black, -2px 2px 1px black, 2px -2px 1px black;
+    margin-bottom: 30px;
+    font-variant: normal;
+  }
+
 /*SITE#INDEX PAGE*/
   .background {
     background:#51d380;
@@ -87,9 +124,30 @@
                  <!-- END OF STYLE -->
 
 </head>
-<body class="background container-fluid">
 
-<%= link_to "Log Out", logout_path, method: :delete, data: { confirm: "Are you sure?!"} %>
+<nav id="navstyle" class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <ul class="nav navbar-nav navbar-left">
+        
+        <li><h3 class="googfont3"> Trippin!</h3></li>
+      
+        <li><a class="fcolor" href="/">Home</a></li>
+        <li><a class="fcolor" href="/users">Show Users</a></li>
+        <li><a class="fcolor" href="/itineraries">All Itineraries</a></li>
+        <li><%= link_to "Log Out", logout_path, method: :delete, data: { confirm: "Are you sure?!"}, class: "fcolor" %></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<body class="push background container-fluid">
+
 
 <%= yield %>
 
