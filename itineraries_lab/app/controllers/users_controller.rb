@@ -37,6 +37,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find params[:id]
     @itineraries = User.all - @user.itineraries
     # @comments = @user.comments
   end

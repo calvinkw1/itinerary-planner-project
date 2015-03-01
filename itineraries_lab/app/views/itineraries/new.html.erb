@@ -1,6 +1,9 @@
 <h1>Add Itinerary</h1>
 
 <%= form_for @itinerary do |f| %>
+
+<%= f.hidden_field :user_id, value: session[:user_id] %>
+
 <p>
   <%= f.label :name %>
   <%= f.text_field :name, autofocus: true %>
