@@ -1,34 +1,50 @@
-<h1>Viewing Itinerary for <%= @itinerary.name %></h1>
+<h1 class="googfont2">Trippin!</h1>
+<hr>
+<h4>Signed In As: <%=  %>  </h4>
+<hr>
+<center>
+<div class="row">
 
-<h3><%= @itinerary.origin %></h3>
-<h3><%= @itinerary.destination %></h3>
+  <h1>Viewing Itinerary for <%= @itinerary.name %></h1>
 
-<h4>Start Date: <%= @itinerary.start_date.to_s(:long) %></h4>
-<h4>End Date: <%= @itinerary.end_date.to_s(:long) %></h4>
+  <div class="col-sm-6">
+    <h3><%= @itinerary.origin %></h3>
+    <h2>TO</h2>
+    <h3><%= @itinerary.destination %></h3>
+  </div>
+  <div class="col-sm-6">
+    <h4>Start Date: <%= @itinerary.start_date.to_s(:long) %></h4>
+    <h4>End Date: <%= @itinerary.end_date.to_s(:long) %></h4>
+  </div>
 
-<h4>Destinations:</h4>
-
-<div>
-<ul>
-<% @destinations.each do |destination| %>
-  <li><%= link_to destination.name, destination_path(destination) %></li>
-<% end %>
-</ul>
+</div>
+<hr>
+<div class="row">
+  
+  <div class="col-sm-6">
+  <h4>Destinations:</h4>
+    
+    <% @destinations.each do |destination| %>
+      <h5><%= link_to destination.name, destination_path(destination) %></h5>
+    <% end %>
+    
+  
+    <p>
+      <%= link_to "Add a destination", new_destination_path %>
+    </p>
+  </div>
+  <div class="col-sm-6">
+    <h4>Companions: </h4>
+    <ul>
+      <% @companions.each do |companion| %>
+        <h5><%= link_to "#{companion.first_name} #{companion.last_name}", user_path(companion) %></h5>
+      <% end %>
+    </ul>
+  </div>
 </div>
 
-<p>
-  <%= link_to "Add a destination", new_destination_path %>
-</p>
-<br>
 
-<h4>Companions: </h4>
-<ul>
-  <% @companions.each do |companion| %>
-    <li><%= link_to "#{companion.first_name} #{companion.last_name}", user_path(companion) %></li>
-  <% end %>
-</ul>
-<br><br>
-
+<hr>
 <p>
   <%= link_to "Edit Itinerary", edit_itinerary_path %>
 </p>
@@ -36,3 +52,4 @@
 <p>
   <%= link_to "Back to User", user_path(session[:user_id]) %>
 </p>
+</center>
