@@ -23,6 +23,7 @@ class ItinerariesController < ApplicationController
 
   def show
     @destinations = @itinerary.destinations
+    @companions = @itinerary.users
   end
 
   def edit

@@ -5,6 +5,10 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def signup
+    @user = User.new
+  end
+
   def create
     @user = User.create user_params
     if @user.save
@@ -13,10 +17,6 @@ class UsersController < ApplicationController
     else
       render :signup
     end
-  end
-
-  def signup
-    @user = User.new
   end
 
   def login
@@ -55,8 +55,6 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
-
-
   private
   def user_params
     params.require(:user).permit(:first_name, :last_name, :username, :password, :password_digest)
@@ -64,7 +62,6 @@ class UsersController < ApplicationController
 
   def find_user
     @user = User.find(params[:id])
-
   end
 
 
