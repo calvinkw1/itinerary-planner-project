@@ -49,6 +49,7 @@ class ItinerariesController < ApplicationController
   end
 
   def find_itinerary
+    session[:itinerary_id] = Itinerary.find params[:id]
     @itinerary = Itinerary.find params[:id]
   end
 

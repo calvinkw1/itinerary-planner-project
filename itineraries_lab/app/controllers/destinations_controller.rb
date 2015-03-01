@@ -1,7 +1,7 @@
 class DestinationsController < ApplicationController
   before_action :confirm_logged_in
   before_action :find_itinerary, only: [:new, :create, :add_destination]
-  before_action :find_destination, only: [:creat, :show, :edit, :update, :destroy]
+  before_action :find_destination, only: [:show, :edit, :update, :destroy]
 
   def index
     @destination = Destination.all
@@ -12,10 +12,10 @@ class DestinationsController < ApplicationController
   end
 
   def create 
-    itinerary = Itinerary.find params[:id]
+    # itinerary = Itinerary.find params[:id]
     @destination = Destination.create destination_params
     if @destination.save
-      itinerary.destinations << @destination
+      @itinerary.destinations << @destination
       redirect_to itinerary_path(@itinerary)
     else
       render :new
@@ -55,6 +55,7 @@ class DestinationsController < ApplicationController
     @destination.delete
     redirect_to itinerary_path(@itinerary)
   end
+
   private
    def destination_params
      params.require(:destination).permit(:name, :location, :start_date, :end_date)
@@ -63,7 +64,7 @@ class DestinationsController < ApplicationController
     @destination = Destination.find params[:id]
    end
    def find_itinerary
-     @itinerary = Itinerary.find params[:id]
+    @itinerary = Itinerary.find(session[:itinerary_id]["id"])
    end
 
   private
