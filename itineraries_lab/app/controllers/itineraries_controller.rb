@@ -1,5 +1,5 @@
 class ItinerariesController < ApplicationController
-  before_action :find_itinerary, only: [:create, :show, :edit, :update, :destroy]
+  before_action :find_itinerary, only: [:show, :edit, :update, :destroy]
 
 
   def index
@@ -28,14 +28,6 @@ class ItinerariesController < ApplicationController
     @comments = @itinerary.comments
   end
 
-  def add_companion
-    @companions = @itinerary.users
-    @companion = User.find companion_params[:id]
-    unless @companions.include? @companion
-      @companions << @companion
-    end
-    redirect_to @itinerary
-  end
 
   def edit
   end
@@ -59,9 +51,6 @@ class ItinerariesController < ApplicationController
     @itinerary = Itinerary.find params[:id]
   end
 
-  def companion_params
-    params.require(:user).permit(:id, :first_name, :last_name)
-  end
 
 end
 
