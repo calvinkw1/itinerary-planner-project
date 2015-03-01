@@ -23,10 +23,12 @@ class ItinerariesController < ApplicationController
   end
 
   def show
+
     @itinerary = Itinerary.find params[:id]
     @destinations = @itinerary.destinations
     @companions = @itinerary.users
     @comments = @itinerary.comments
+    
   end
 
 
