@@ -12,16 +12,23 @@ Rails.application.routes.draw do
 
   get '/logout', to: "users#logout"
 
+  resources :users
+  
+  resources :users do
+    post '/comments' => 'comments#create', as: 'comments'
+  end
+
   get '/destination/new', to: "destinations#new", as: 'newdest'
 
-  resources :users
-
-  resources :itineraries
+  resources :itineraries do
+    post '/comments' => 'comments#create', as: 'comments'
+  end
   
-  resources :destinations
+  resources :destinations do
+    post '/comments' => 'comments#create', as: 'comments'
+  end
 
   post '/itineraries/:id/users/new', to: 'itineraries#add_companion', as: :add_companion
-
 
 #           Prefix Verb   URI Pattern                      Controller#Action
 #             root GET    /                                site#index
