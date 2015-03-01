@@ -1,5 +1,5 @@
 class ItinerariesController < ApplicationController
-  before_action :find_itinerary, only: [:create, :show, :edit, :update]
+  before_action :find_itinerary, only: [:create, :show, :edit, :update, :destroy]
 
 
   def index
@@ -31,6 +31,11 @@ class ItinerariesController < ApplicationController
   def update
     @itinerary.update_attributes itinerary_params
     redirect_to @itinerary
+  end
+
+  def destroy
+    @itinerary.delete
+    redirect_to user_path session[:user_id]
   end
 
   private
