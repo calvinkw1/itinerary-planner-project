@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   #   post '/comments' => 'comments#create', as: 'comments'
   # end
 
+  get '/destination/new', to: "destinations#new", as: 'newdest'
+
+  resources :users
+
   resources :itineraries # do
   #   post '/comments' => 'comments#create', as: 'comments'
   # end
@@ -25,7 +29,12 @@ Rails.application.routes.draw do
   # end
 
 #           Prefix Verb   URI Pattern                      Controller#Action
-#             root GET    /                                access#index
+#             root GET    /                                site#index
+#            login GET    /login(.:format)                 users#login
+#           signup GET    /signup(.:format)                users#signup
+#                  POST   /login(.:format)                 users#login
+#                  POST   /signup(.:format)                users#create
+#           logout GET    /logout(.:format)                users#logout
 #            users GET    /users(.:format)                 users#index
 #                  POST   /users(.:format)                 users#create
 #         new_user GET    /users/new(.:format)             users#new

@@ -1,5 +1,7 @@
-<h1>Create New User</h1>
-
+<center>
+<div class="loginbox">
+<h1>Become a User</h1>
+<h3> All we need is...</h3>
 <%= simple_form_for(@user) do |f|%>
 
 <p>
@@ -21,5 +23,7 @@
 <p>
   <%= f.button(:submit, "Signup", class: "btn btn-primary") %>
 </p>
-  <%= link_to "Have an account already? Log in here", login_path %>
+  <%= link_to "Have an account already? Log in here", login_path, class: "shadow" %>
 <% end %>
+</center>
+</div>

@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:edit, :show, :update, :destroy, :add_itinerary]
-  
+
   def index
     @users = User.all
+  end
+
+  def signup
+    @user = User.new
   end
 
   def create
@@ -13,10 +17,6 @@ class UsersController < ApplicationController
     else
       render :signup
     end
-  end
-
-  def signup
-    @user = User.new
   end
 
   def login
@@ -37,6 +37,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find params[:id]
     @itineraries = User.all - @user.itineraries
     # @comments = @user.comments
   end
@@ -62,5 +63,6 @@ class UsersController < ApplicationController
   def find_user
     @user = User.find(params[:id])
   end
+
 
 end
