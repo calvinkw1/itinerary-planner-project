@@ -1,0 +1,19 @@
+<h1><%= @user.first_name %> <%= @user.last_name %>'s Itineraries</h1>
+
+<ul>
+  <% @user.itineraries.each do |itinerary| %>
+  <li><%= link_to itinerary.name, itinerary_path(itinerary) %> – <%= itinerary.start_date.to_s(:long) %> to <%= itinerary.end_date.to_s(:long) %></li>
+  <% end %>
+</ul>
+
+<p>
+  <%= link_to "Add an itinerary", new_itinerary_path(session[:user_id]) %>
+</p>
+
+<p>
+  <%= link_to "Edit user", edit_user_path %>
+</p>
+
+<p>
+  <%= link_to "Go back", root_path %>
+</p>

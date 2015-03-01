@@ -1,4 +1,5 @@
 class DestinationsController < ApplicationController
+<<<<<<< Updated upstream
   before_action :find_itinerary, only: [:new, :create, :add_destination]
   before_action :find_destination, only: [:creat, :show, :edit, :update, :destroy]
   def index
@@ -6,10 +7,17 @@ class DestinationsController < ApplicationController
   end
   def new
     
+=======
+  def index
+    @destination = Destination.all
+  end
+  def new
+>>>>>>> Stashed changes
     @destination = Destination.new
   end
 
   def create 
+<<<<<<< Updated upstream
     itinerary = Itinerary.find params[:id]
 
     @destination = Destination.create destination_params
@@ -33,13 +41,21 @@ class DestinationsController < ApplicationController
       render :new
     end
 
+=======
+    Destination.create 
+>>>>>>> Stashed changes
   end
 
   def show
+      # @itinerary = Itinerary.find params[:id]
+      @destination = Destination.find params[:id]
+    # @destination = @itinerary.destination
   end
 
   def edit
+
   end
+<<<<<<< Updated upstream
 
   def update 
     @destination.update_attributes destination_params
@@ -60,5 +76,11 @@ class DestinationsController < ApplicationController
    def find_itinerary
      @itinerary = Itinerary.find params[:id]
    end
+=======
+  private
+  # def destination_params
+  #   params.require(:destination).permit(:name, :location, :start_date, :end_date)
+  # end
+>>>>>>> Stashed changes
   
 end
