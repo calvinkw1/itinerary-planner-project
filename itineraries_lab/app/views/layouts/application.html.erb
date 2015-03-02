@@ -175,10 +175,11 @@
         <li><a class="fcolor" href="/itineraries">All Itineraries</a></li>
         <li><%= link_to "Log Out", logout_path, method: :delete, data: { confirm: "Are you sure?!"}, class: "fcolor" %></li>
         <li class="signedin">
-          <% if @user == nil%>
+          <% if session[:user_id] == nil%>
           not signed in 
           <% else  %>
-          Signed In As: <%= @user.username %>
+          <% user = User.find session[:user_id] %>
+          Signed In As: <%= user.username %>
           <% end  %>
           </li>
       </ul>
