@@ -61,6 +61,8 @@
 <hr>
   <p>
   <%= comment.content %> - <%= time_ago_in_words comment.created_at %> ago
+  <br>
+  by <%= @user.username %>
   </p>
 <hr>
 <% end %>
