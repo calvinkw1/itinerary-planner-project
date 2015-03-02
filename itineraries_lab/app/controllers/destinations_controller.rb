@@ -21,7 +21,7 @@ class DestinationsController < ApplicationController
     if @destination.save
       @itinerary.destinations << @destination
       @destination.users << @user
-      redirect_to itinerary_path(@itinerary)
+      redirect_to itinerary_path(@itinerary), flash: {success: "Destination Added"}
     else
       render :new
     end
@@ -53,7 +53,7 @@ class DestinationsController < ApplicationController
       @destination.users << companion
       @itinerary.users << companion
     end
-    redirect_to destination_path
+    redirect_to destination_path, flash: {success: "You added a friend to your trip!"}
   end
 
   def remove_companion

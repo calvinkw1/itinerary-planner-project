@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @user = User.create user_params
     if @user.save
       session[:user_id] = @user.id
-      redirect_to user_path session[:user_id]
+      redirect_to user_path session[:user_id], flash: {success: "You've joined Trippin"}
     else
       render :signup
     end
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
       render :login
     else
       session[:user_id] = authorized_user.id
-      redirect_to user_path session[:user_id]
+      redirect_to user_path session[:user_id], flash: {success: "Logged in"}
     end
   end
 
@@ -50,17 +50,17 @@ class UsersController < ApplicationController
 
   def update
     @user.update_attributes user_params
-    redirect_to @user
+    redirect_to @user, flash: {notice: "User updated"}
   end
 
   def destroy
     @user.destroy
-    redirect_to users_path
+    redirect_to users_path, flash: {alert: "User Destroyed, oh the humanity!"}
   end
 
   def logout
     session[:user_id] = nil
-    redirect_to root_path
+    redirect_to root_path, flash: {notice: "You've logged out!"}
   end
 
   private

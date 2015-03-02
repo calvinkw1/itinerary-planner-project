@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
   def create
     find_commentable.comments.build(comment_params).save
-    redirect_to :back
+    redirect_to :back, flash: {success: "You successful left a comment"}
   end
 
   private

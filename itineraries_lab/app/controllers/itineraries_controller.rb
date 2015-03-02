@@ -18,7 +18,7 @@ class ItinerariesController < ApplicationController
     @itinerary = Itinerary.create itinerary_params
     if @itinerary.save
       user.itineraries << @itinerary
-      redirect_to user_path(session[:user_id])
+      redirect_to user_path(session[:user_id]), flash: {success: "New Trip Added"}
     else
       render :new
     end
@@ -39,12 +39,12 @@ class ItinerariesController < ApplicationController
 
   def update
     @itinerary.update_attributes itinerary_params
-    redirect_to @itinerary
+    redirect_to @itinerary, flash: {notice: "Trip Updated"}
   end
 
   def destroy
     @itinerary.delete
-    redirect_to user_path session[:user_id]
+    redirect_to user_path session[:user_id], flash: {alert: "Trip Cancelled"}
   end
 
   private
