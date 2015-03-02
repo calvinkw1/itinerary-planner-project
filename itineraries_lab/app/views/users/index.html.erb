@@ -2,9 +2,11 @@
 <h1 class="smallcaps">User directory</h1>
 <hr>
 
+<ul>
   <% @users.each do |user| %>
-  <h2><%= link_to user.username, user_path(user) %>, <%= user.first_name %> <%= user.last_name %></h2>
+  <li><h2><%= link_to user.username, user_path(user) %>, <%= user.first_name %> <%= user.last_name %></h2></li>
   <% end %>
+</ul>
 
 </center>
 <hr>

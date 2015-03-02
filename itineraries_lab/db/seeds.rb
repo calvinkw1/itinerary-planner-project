@@ -11,11 +11,11 @@ Itinerary.destroy_all
 Destination.destroy_all
 
 
-candice = User.create(first_name:"Candice", last_name:"Swanepoel", username:"eyecandy", password:"test")
+candice = User.create(first_name:"Candice", last_name:"Swanepoel", username:"candice", password:"test")
 
-alessandra = User.create(first_name:"Alessandra", last_name:"Ambrosio", username:"beautiful", password:"test")
+alessandra = User.create(first_name:"Alessandra", last_name:"Ambrosio", username:"alessandra", password:"test")
 
-karlie = User.create(first_name:"Karlie", last_name:"Kloss", username:"sexkitten", password:"test")
+karlie = User.create(first_name:"Karlie", last_name:"Kloss", username:"karlie", password:"test")
 
 
 trip1 = Itinerary.create(name: "trip1", origin: "San Francisco", destination: "Tokyo", start_date: "2015-03-15", end_date: "2015-03-25")

@@ -3,6 +3,7 @@ class ItinerariesController < ApplicationController
   before_action :find_itinerary, only: [:show, :edit, :update, :destroy]
   before_action :confirm_creator, only: [:update, :edit]
 
+
   def index
     @user = User.find session[:user_id]
     @itineraries = Itinerary.all
@@ -15,7 +16,6 @@ class ItinerariesController < ApplicationController
   def create
     user = User.find session[:user_id]
     @itinerary = Itinerary.create itinerary_params
-    session[:creator_id] = user
     if @itinerary.save
       user.itineraries << @itinerary
       redirect_to user_path(session[:user_id])
@@ -58,7 +58,9 @@ class ItinerariesController < ApplicationController
   end
 
   def confirm_creator
-    unless session[:creator_id] == session[:user_id]
+    user = User.find session[:user_id]
+    itinerary = Itinerary.find params[:id]
+    unless user.itineraries.include? itinerary
       redirect_to itinerary_path params[:id], alert: "Only the creator can make changes!"
     end
   end
