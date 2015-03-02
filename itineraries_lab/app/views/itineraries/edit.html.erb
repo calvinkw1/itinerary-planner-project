@@ -1,3 +1,4 @@
+
 <h1>Edit Itinerary</h1>
 
 <%= form_for @itinerary do |f| %>
@@ -24,7 +25,7 @@
   <%= f.label :end_date %>
   <%= f.text_field :end_date %>
 </p>
-  <%= f.submit %>
+  <h1 class = "commentsubmit btn btn-success btn-md"><%= f.submit %></h1>
 <% end %>
 
 <% if @itinerary.errors.any?%>
@@ -36,9 +37,9 @@
   <% end%>
 
 <p>
-  <%= button_to "Delete Itinerary", itinerary_path(@itinerary), method: :delete, data: { confirm: "Are you sure?!"} %>
+  <%= button_to "Delete Itinerary", itinerary_path(@itinerary), method: :delete, data: { confirm: "Are you sure?!"}, class: "btn btn-danger btn-lg" %>
 </p>
-
+<hr>
 <p>
-  <%= link_to "Cancel", itinerary_path(@itinerary) %>
+  <%= link_to "Cancel", itinerary_path(@itinerary), class: "btn btn-primary btn-lg" %>
 </p>

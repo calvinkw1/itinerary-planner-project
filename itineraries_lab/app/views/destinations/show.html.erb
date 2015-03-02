@@ -30,20 +30,20 @@
   <div class="col-sm-6">
 
   <h2>Companions:</h2>
-    
+    <ul>
     <% @current_companions.each do |companion| %>
-      <h5> <%= "#{companion.first_name} #{companion.last_name}" %><%= button_to "X", remove_companion_path(@destination,companion), method: :delete, data: { confirm: "Remove #{companion.first_name}?"}, class: "inline btn btn-danger btn-sm" %></h5>
+       <li><%= "#{companion.first_name} #{companion.last_name}" %><%= button_to "X", remove_companion_path(@destination,companion), method: :delete, data: { confirm: "Remove #{companion.first_name}?"}, class: "inline btn btn-danger btn-sm" %></li>
       
     <% end %>
-    
+    </ul>
 <center>
   <h3>Add a Companion:</h3>
 
-  <% unless @current_companions.empty? %>
+ <!--  <%  @current_companions.empty? %> -->
     <%= form_tag add_companion_path(@destination) %>
      <h1 class="dropdown"><%= collection_select :user, :id, @avail_companions, :id, :first_name %><%= submit_tag "Add" %></h1>
       
-  <% end %>
+  <!-- <%  %> -->
 
 
   </div>

@@ -27,7 +27,7 @@
   <h4>Destinations:</h4>
     
     <% @destinations.each do |destination| %>
-      <h5 class="larger"><%= link_to destination.name, destination_path(destination) %></h5>
+      <h5 class="larger shadow"><%= link_to destination.name, destination_path(destination) %></h5>
     <% end %>
     
   
@@ -39,7 +39,7 @@
     <h4>Companions: </h4>
     <ul>
       <% @companions.each do |companion| %>
-        <h5 class="larger"><%= link_to "#{companion.first_name} #{companion.last_name}", user_path(companion) %></h5>
+        <h5 class="larger shadow"><%= link_to "#{companion.first_name} #{companion.last_name}", user_path(companion) %></h5>
       <% end %>
     </ul>
   </div>
