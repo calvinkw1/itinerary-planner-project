@@ -56,9 +56,8 @@
 <center>
 <div class="commbox">
 <h3>Comments</h3>
-
-<% @comments.each do |comment| %>
 <hr>
+<% @comments.each do |comment| %>
   <p>
   <%= comment.content %> - <%= time_ago_in_words comment.created_at %> ago
   <br>
