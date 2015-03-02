@@ -1,9 +1,10 @@
 
 <center>
 <h1 class="smallcaps">Here are all our user's itineraries</h1>
-
+<hr>
 <% @itineraries.each do |itinerary| %>
-  <li><%= link_to itinerary.name, itinerary_path(itinerary) %></li>
+  <h2><%= link_to itinerary.name, itinerary_path(itinerary) %></h2>
 <% end %>
+<hr>
 </center>
 

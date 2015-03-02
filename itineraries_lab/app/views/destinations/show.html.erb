@@ -1,16 +1,23 @@
+
+
+<div class="row">
 <h1><%= @destination.name %></h1>
 <hr>
-<h2><%= @destination.location %></h2>
-<h2><%= @destination.start_date.to_s(:long) %></h2>
-<h2><%= @destination.end_date.to_s(:long) %></h2>
+<center>
+  <div class="col-sm-6">
+    <h2><%= @destination.location %></h2>
+    <h2><%= @destination.start_date.to_s(:long) %></h2>
+    <h2><%= @destination.end_date.to_s(:long) %></h2>
+    <p>
+      <%= link_to "Add a Destination", new_destination_path, class: "shadow"  %>
+    </p>
 
-<p>
-  <%= link_to "Add a Destination", new_destination_path, class: "shadow"  %>
-</p>
+    <p>
+      <%= link_to "Edit Destination", edit_destination_path(@destination), class: "shadow"  %>
+    </p>
+  </div>
 
-<p>
-  <%= link_to "Edit Destination", edit_destination_path(@destination), class: "shadow"  %>
-</p>
+
 
 <div>
   <% flash.each do |name, msg| -%>
@@ -18,28 +25,36 @@
   <% end -%>
 </div>
 
+</center>
 
-<h3>Companions:</h3>
+  <div class="col-sm-6">
 
-<p>
-  <ul>
-  <% @current_companions.each do |companion| %>
-    <li><%= "#{companion.first_name} #{companion.last_name}" %></li>
-    <%= button_to "Remove", remove_companion_path(@destination,companion), method: :delete, data: { confirm: "Remove #{companion.first_name}?"} %>
+  <h2>Companions:</h2>
+    
+    <% @current_companions.each do |companion| %>
+      <h5> <%= "#{companion.first_name} #{companion.last_name}" %><%= button_to "X", remove_companion_path(@destination,companion), method: :delete, data: { confirm: "Remove #{companion.first_name}?"}, class: "inline btn btn-danger btn-sm" %></h5>
+      
+    <% end %>
+    
+<center>
+  <p>Add a Companion:</p>
+
+  <% unless @current_companions.empty? %>
+    <%= form_tag add_companion_path(@destination) %>
+      <%= collection_select :user, :id, @avail_companions, :id, :first_name %>
+      <%= submit_tag "Add" %>
   <% end %>
-  </ul>
-</p>
 
-<p>Add a Companion:</p>
 
-<% unless @current_companions.empty? %>
-  <%= form_tag add_companion_path(@destination) %>
-    <%= collection_select :user, :id, @avail_companions, :id, :first_name %>
-    <%= submit_tag "Add" %>
-<% end %>
+  </div>
+</div>
+</center>
+
 
 
 <hr>
+<center>
+<div class="commbox">
 <h3>Comments</h3>
 
 <% @comments.each do |comment| %>
@@ -49,13 +64,15 @@
 <% end %>
 
 <%= form_for [@destination, Comment.new] do |f| %>
-  <div><%= f.text_area :content, :rows => 5 %></div>
-  <%= f.submit %>
+  <div><%= f.text_area :content, :rows => 5, :cols => 40 %></div>
+  <h3 class="commentsubmit btn btn-success btn-sm"><%= f.submit %></h3>
 <% end %>
 
-
+</div>
+</center>
+<hr>
 <p>
-  <%= link_to "Back to Itinerary", itinerary_path(session[:itinerary_id]["id"])%>
+  <%= link_to "Back to Itinerary", itinerary_path(session[:itinerary_id]["id"]), class: "btn btn-primary btn-lg"%>
 </p>
 
 
