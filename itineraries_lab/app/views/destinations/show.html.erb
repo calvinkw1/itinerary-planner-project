@@ -37,12 +37,12 @@
     <% end %>
     
 <center>
-  <p>Add a Companion:</p>
+  <h3>Add a Companion:</h3>
 
   <% unless @current_companions.empty? %>
     <%= form_tag add_companion_path(@destination) %>
-      <%= collection_select :user, :id, @avail_companions, :id, :first_name %>
-      <%= submit_tag "Add" %>
+     <h1 class="dropdown"><%= collection_select :user, :id, @avail_companions, :id, :first_name %><%= submit_tag "Add" %></h1>
+      
   <% end %>
 
 
@@ -58,9 +58,11 @@
 <h3>Comments</h3>
 
 <% @comments.each do |comment| %>
+<hr>
   <p>
   <%= comment.content %> - <%= time_ago_in_words comment.created_at %> ago
   </p>
+<hr>
 <% end %>
 
 <%= form_for [@destination, Comment.new] do |f| %>
