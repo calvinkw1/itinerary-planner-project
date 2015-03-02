@@ -3,7 +3,7 @@ class DestinationsController < ApplicationController
   before_action :find_itinerary, only: [:new, :create, :add_destination, :destroy, :add_companion]
   before_action :find_destination, only: [:show, :edit, :update, :destroy, :add_companion]
   before_action :find_user, only: [:create]
-  before_action :confirm_creator, only: [:new, :create, :edit]
+  before_action :confirm_creator, only: [:edit]
 
   def index
     @user = User.find session[:user_id]
@@ -11,6 +11,7 @@ class DestinationsController < ApplicationController
   end
   
   def new
+    
     @destination = Destination.new
   end
 
@@ -99,8 +100,10 @@ class DestinationsController < ApplicationController
   end
 
   def confirm_creator
-    unless session[:creator_id] == session[:user_id]
-      redirect_to destination_path params[:id], notice: "Only the creator can make changes!"
+    user = User.find session[:user_id]
+    destination = Destination.find params[:id]
+    unless user.destinations.include? destination
+      redirect_to destination_path params[:id], alert: "Only the creator can make changes!"
     end
   end
   
