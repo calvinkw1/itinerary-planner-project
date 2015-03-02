@@ -7,6 +7,6 @@ class Itinerary < ActiveRecord::Base
   
   validates :name, :origin, :destination, :start_date, :end_date, presence: true
 
-  # validates :end_date, date: { after: :start_date, message: 'must be AFTER start date.'}
+  validates :end_date, date: { after: :start_date, message: 'must be AFTER start date.'}
 
 end

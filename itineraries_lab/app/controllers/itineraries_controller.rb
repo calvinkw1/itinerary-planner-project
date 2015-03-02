@@ -38,8 +38,11 @@ class ItinerariesController < ApplicationController
   end
 
   def update
-    @itinerary.update_attributes itinerary_params
-    redirect_to @itinerary, flash: {notice: "Trip Updated"}
+    if @itinerary.update_attributes itinerary_params
+      redirect_to @itinerary, flash: {notice: "Trip Updated"}
+    else
+      render :edit
+    end
   end
 
   def destroy

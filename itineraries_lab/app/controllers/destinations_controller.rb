@@ -72,8 +72,11 @@ class DestinationsController < ApplicationController
   end
 
   def update 
-    @destination.update_attributes destination_params
-    redirect_to @destination
+    if @destination.update_attributes destination_params
+      redirect_to @destination
+    else
+      render :edit
+    end
   end
 
   def destroy
