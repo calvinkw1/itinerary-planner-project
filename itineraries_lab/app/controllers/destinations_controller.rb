@@ -1,6 +1,6 @@
 class DestinationsController < ApplicationController
   before_action :confirm_logged_in
-  before_action :find_itinerary, only: [:new, :create, :add_destination, :destroy]
+  before_action :find_itinerary, only: [:new, :create, :add_destination, :destroy, :add_companion]
   before_action :find_destination, only: [:show, :edit, :update, :destroy, :add_companion]
   before_action :find_user, only: [:create]
 
@@ -49,14 +49,19 @@ class DestinationsController < ApplicationController
     companion = User.find user_params[:id]
     unless @destination.users.include? companion
       @destination.users << companion
+      @itinerary.users << companion
     end
     redirect_to destination_path
   end
 
   def remove_companion
     user = User.find params[:user_id]
+    itinerary = Itinerary.find session[:itinerary_id]["id"]
     destination = Destination.find params[:destination_id]
     destination.users.delete user
+    if user.destinations.empty?
+      itinerary.users.delete user
+    end
     redirect_to destination_path(destination)
   end
 
