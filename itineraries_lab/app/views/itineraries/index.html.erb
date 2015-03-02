@@ -1,6 +1,9 @@
-<h1>All Itineraries</h1>
+
+<center>
+<h1 class="smallcaps">Here are all our user's itineraries</h1>
 
 <% @itineraries.each do |itinerary| %>
   <li><%= link_to itinerary.name, itinerary_path(itinerary) %></li>
 <% end %>
+</center>
 

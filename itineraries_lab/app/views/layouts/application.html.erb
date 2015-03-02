@@ -19,9 +19,23 @@
 
     <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 
+     <!-- FLASH HASH -->
+
+<% flash.each do |key, value| %>
+  <% if key == "notice" %>
+    <%= content_tag :div, value, class: "text-center alert alert-warning" %>
+  <% elsif key == "alert" %>
+    <%= content_tag :div, value, class: "text-center alert alert-danger" %>
+  <% else %>
+    <%= content_tag :div, value, class: "text-center alert alert-success" %>
+  <% end %>
+<% end %>
+
+
              <!-- BEGINNING OF STYLE -->
 
 <style>
+        /*ALL NAVBAR*/
 #navstyle {
   background: transparent;
   background-color: rgba(14, 14, 14, .2);
@@ -61,6 +75,7 @@
   .signedin {
     color: black !important;
     margin-left: 100px;
+    font-size: 18px;
   }
 
 /*SITE#INDEX PAGE*/
@@ -86,6 +101,11 @@
   .fontstyle {
     color: #49BABE !important;
     text-shadow:2px 2px 1px black, -2px -2px 1px black, -2px 2px 1px black, 2px -2px 1px black;
+  }
+
+  /*USERS#INDEX PAGE AND ITINERARIES#INDEX PAGE*/
+  .smallcaps {
+    
   }
 
   /*USERS#LOGIN*/ 
