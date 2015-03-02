@@ -1,0 +1,46 @@
+Destination
+  id: integer
+  name: string
+  location: string
+  start_date: date
+  end_date: date
+  created_at: datetime
+  updated_at: datetime
+  has_many :itineraries (through :joins)
+  has_many :joins
+  has_many :users (through :joins)
+Itinerary
+  id: integer
+  name: string
+  origin: string
+  destination: string
+  start_date: date
+  end_date: date
+  user_id: integer
+  created_at: datetime
+  updated_at: datetime
+  has_many :destinations (through :joins)
+  has_many :joins
+  has_many :users (through :joins)
+Join
+  id: integer
+  user_id: integer
+  destination_id: integer
+  itinerary_id: integer
+  created_at: datetime
+  updated_at: datetime
+  belongs_to :destination
+  belongs_to :itinerary
+  belongs_to :user
+User
+  id: integer
+  first_name: string
+  last_name: string
+  username: string
+  password: string
+  password_digest: string
+  created_at: datetime
+  updated_at: datetime
+  has_many :destinations (through :joins)
+  has_many :itineraries (through :joins)
+  has_many :joins
