@@ -3,7 +3,7 @@
 <h1 class="smallcaps">Here are all our user's itineraries</h1>
 <hr>
 <% @itineraries.each do |itinerary| %>
-  <h2><%= link_to itinerary.name, itinerary_path(itinerary) %></h2>
+  <h2 class="shadow"><%= link_to itinerary.name, itinerary_path(itinerary) %></h2>
 <% end %>
 <hr>
 </center>
