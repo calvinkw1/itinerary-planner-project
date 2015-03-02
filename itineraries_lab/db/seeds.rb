@@ -53,3 +53,10 @@ trip3.destinations << guana
 
 candice.destinations << tokyo
 candice.destinations << hongKong
+candice.destinations << singapore
+
+alessandra.destinations << tetbury
+
+karlie.destinations << havana
+karlie.destinations << barbuda
+karlie.destinations << guana
