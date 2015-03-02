@@ -58,6 +58,10 @@
     margin-bottom: 30px;
     font-variant: normal;
   }
+  .signedin {
+    color: black !important;
+    margin-left: 100px;
+  }
 
 /*SITE#INDEX PAGE*/
   .background {
@@ -142,6 +146,13 @@
         <li><a class="fcolor" href="/users">Show Users</a></li>
         <li><a class="fcolor" href="/itineraries">All Itineraries</a></li>
         <li><%= link_to "Log Out", logout_path, method: :delete, data: { confirm: "Are you sure?!"}, class: "fcolor" %></li>
+        <li class="signedin">
+          <% if @user == nil%>
+          not signed in 
+          <% else  %>
+          Signed In As: <%= @user.username %>
+          <% end  %>
+          </li>
       </ul>
     </div>
   </div>

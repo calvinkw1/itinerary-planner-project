@@ -4,6 +4,7 @@ class ItinerariesController < ApplicationController
 
 
   def index
+    @user = User.find session[:user_id]
     @itineraries = Itinerary.all
   end
 
@@ -23,7 +24,7 @@ class ItinerariesController < ApplicationController
   end
 
   def show
-
+    @user = User.find session[:user_id]
     @itinerary = Itinerary.find params[:id]
     @destinations = @itinerary.destinations
     @companions = @itinerary.users

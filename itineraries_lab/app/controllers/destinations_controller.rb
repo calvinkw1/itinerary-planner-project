@@ -5,6 +5,7 @@ class DestinationsController < ApplicationController
   before_action :find_user, only: [:create]
 
   def index
+    @user = User.find session[:user_id]
     @destination = Destination.all
   end
   
@@ -38,8 +39,7 @@ class DestinationsController < ApplicationController
   # end
 
   def show
-    # @itinerary = Itinerary.find params[:id]
-    # @destination = @itinerary.destination
+    @user = User.find session[:user_id]
     @current_companions = @destination.users
     @avail_companions = User.all - @current_companions
     @comments = @destination.comments

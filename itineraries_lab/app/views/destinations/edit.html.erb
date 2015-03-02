@@ -1,5 +1,4 @@
-<h1>Destinations#edit</h1>
-<p>Find me in app/views/destinations/edit.html.erb</p>
+
 
 <h1>Edit Destination</h1>
 
@@ -33,5 +32,5 @@
   <% end%>
 
 <p>
-  <%= button_to "Delete Destination", destination_path(@destination), method: :delete, data: { confirm: "Are you sure?"} %>
+  <%= button_to "Delete Destination", destination_path(@destination), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger btn-lg" %>
 </p>

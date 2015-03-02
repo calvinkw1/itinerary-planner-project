@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
       redirect_to login_path, alert: "Please log in!"
     end
   end
-
+  
 
 
   # private

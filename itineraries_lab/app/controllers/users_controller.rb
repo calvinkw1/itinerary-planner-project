@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:edit, :show, :update, :destroy, :add_itinerary]
 
   def index
+    @user = User.find session[:user_id]
     @users = User.all
   end
 
