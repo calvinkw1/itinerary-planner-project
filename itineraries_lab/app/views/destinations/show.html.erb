@@ -45,3 +45,13 @@
   <div><%= f.text_area :content, :rows => 5 %></div>
   <%= f.submit %>
 <% end %>
+
+
+<p>
+  <%= link_to "Back to Itinerary", itinerary_path(session[:itinerary_id]["id"])%>
+</p>
+
+
+
+
+

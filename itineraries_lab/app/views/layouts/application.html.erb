@@ -48,7 +48,7 @@
   margin-left: 400px;
 }
 .push {/*THIS IS SO THINGS DONT END UP HIDDEN UNDER NAV*/
-  margin-top: 70px;
+  margin-top: 90px;
 }
 .googfont3 {
     font-family: 'Pacifico', cursive;
@@ -58,15 +58,20 @@
     margin-bottom: 30px;
     font-variant: normal;
   }
+  .signedin {
+    color: black !important;
+    margin-left: 100px;
+  }
 
 /*SITE#INDEX PAGE*/
   .background {
-    background:#51d380;
+    background: #49BABE;
   }   
   .siteindex {
     height: 500px;
-    background-image: url("/candice.png");
+    background-image: url("/beach3.jpg");
     background-repeat: no-repeat;
+    background-size: cover ;
   }
   .googfont {
     font-family: 'Pacifico', cursive;
@@ -77,6 +82,10 @@
   }
   .pushs {
     margin-bottom: -100px;
+  }
+  .fontstyle {
+    color: #49BABE !important;
+    text-shadow:2px 2px 1px black, -2px -2px 1px black, -2px 2px 1px black, 2px -2px 1px black;
   }
 
   /*USERS#LOGIN*/ 
@@ -142,6 +151,13 @@
         <li><a class="fcolor" href="/users">Show Users</a></li>
         <li><a class="fcolor" href="/itineraries">All Itineraries</a></li>
         <li><%= link_to "Log Out", logout_path, method: :delete, data: { confirm: "Are you sure?!"}, class: "fcolor" %></li>
+        <li class="signedin">
+          <% if @user == nil%>
+          not signed in 
+          <% else  %>
+          Signed In As: <%= @user.username %>
+          <% end  %>
+          </li>
       </ul>
     </div>
   </div>

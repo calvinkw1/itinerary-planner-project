@@ -1,17 +1,40 @@
 <h1><%= @user.first_name %> <%= @user.last_name %>'s Itineraries</h1>
 
-<ul>
-  <% @user.itineraries.each do |itinerary| %>
-  <li><%= link_to itinerary.name, itinerary_path(itinerary) %> – <%= itinerary.start_date.to_s(:long) %> to <%= itinerary.end_date.to_s(:long) %></li>
-  <% end %>
-</ul>
+
+
+
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Itinerary</th>
+      <th>Destination</th>
+      <th>Begin</th>
+      <th>End</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <% @user.itineraries.each do |itinerary| %>
+      <td><h2 class="lspacing shadow medfont btn btn-info btn-md"><%= link_to itinerary.name, itinerary_path(itinerary) %></h2></td>
+      <td><h2><%= itinerary.destination %></h2></td>
+      <td><h2><%= itinerary.start_date.to_s(:long) %></h2></td>
+      <td><h2><%= itinerary.end_date.to_s(:long) %></h2></td>
+    </tr>
+    <% end %>
+  </tbody>
+  
+</table>
+
+
+
 
 <p>
-  <%= link_to "Add an itinerary", new_itinerary_path(session[:user_id]) %>
+  <%= link_to "Add an itinerary", new_itinerary_path(session[:user_id]), class: "btn btn-success btn-lg" %>  <%= link_to "Edit user", edit_user_path, class: "btn btn-warning btn-lg" %>
 </p>
 
 <p>
-  <%= link_to "Edit user", edit_user_path %>
+  
 </p>
 
 <h3>Comments</h3>
