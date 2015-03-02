@@ -3,18 +3,18 @@
 <div class="row">
 
   <h1>Viewing Itinerary for</h1><h1 class="white"> <%= @itinerary.name %></h1>
-
+<hr>
   <div class="col-sm-6">
     <h3><%= @itinerary.origin %></h3>
-    <h2>TO</h2>
+    <h3>TO</h3>
     <h3><%= @itinerary.destination %></h3>
 
   </div>
   <div class="col-sm-6">
-    <h4>Start Date: <%= @itinerary.start_date.to_s(:long) %></h4>
-    <h4>End Date: <%= @itinerary.end_date.to_s(:long) %></h4>
+    <h3>Start Date: <%= @itinerary.start_date.to_s(:long) %></h3>
+    <h3>End Date: <%= @itinerary.end_date.to_s(:long) %></h3>
     <p>
-      <%= link_to "Edit Itinerary", edit_itinerary_path, class: "btn btn-warning btn-md" %>
+      <%= link_to "Edit Itinerary", edit_itinerary_path, class: "shadow btn btn-warning btn-md" %>
     </p>
   </div>
   
@@ -32,27 +32,29 @@
     
   
     <p>
-      <%= link_to "Add a destination", new_destination_path(@itinerary) %>
+      <%= link_to "Add a destination", new_destination_path(@itinerary), class: "shadow btn btn-success btn-md" %>
     </p>
   </div>
   <div class="col-sm-6">
     <h4>Companions: </h4>
     <ul>
       <% @companions.each do |companion| %>
-        <h5><%= link_to "#{companion.first_name} #{companion.last_name}", user_path(companion) %></h5>
+        <h5 class="larger"><%= link_to "#{companion.first_name} #{companion.last_name}", user_path(companion) %></h5>
       <% end %>
     </ul>
   </div>
-
-
 </div>
+
+<hr>
 <div class="commbox">
 <h3>Comments</h3>
 
   <% @comments.each do |comment| %>
+  <hr>
     <p>
       <%= comment.content %> - <%= time_ago_in_words comment.created_at %> ago
     </p>
+  <hr>
   <% end %>
 
   <%= form_for [@itinerary, Comment.new] do |f| %>

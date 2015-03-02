@@ -1,3 +1,5 @@
+<center>
+<div class="loginbox">
 <h1>Edit User <%= @user.id %></h1>
 
 <%= simple_form_for(@user) do |f|%>
@@ -19,15 +21,17 @@
   </p>  
 
   <p>
-    <%= f.button(:submit, "Submit changes", class: "btn btn-primary") %>
+    <%= f.button(:submit, "Submit changes", class: "shadow btn btn-primary") %>
   </p>
-
+  <p>
+    <%= button_to "Delete user", user_path(@user), :method => :delete, class: " shadow btn btn-danger btn-md" %>
+  </p>
 <% end %>
+</div>
+</center>
+
+<hr>
 
 <p>
-  <%= button_to "Delete user", user_path(@user), :method => :delete %>
-</p>
-
-<p>
-  <%= link_to "Go back", root_path %>
+  <%= link_to "Go back", root_path, class: "btn btn-primary btn-lg" %>
 </p>
