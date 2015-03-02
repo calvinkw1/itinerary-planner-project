@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   end
 
   post '/destination/:id/users/new', to: 'destinations#add_companion', as: 'add_companion'
+  delete '/destination/:destination_id/users/:user_id', to: 'destinations#remove_companion', as: 'remove_companion'
 
 #           Prefix Verb   URI Pattern                      Controller#Action
 #             root GET    /                                site#index

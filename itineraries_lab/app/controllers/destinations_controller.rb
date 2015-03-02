@@ -53,6 +53,13 @@ class DestinationsController < ApplicationController
     redirect_to destination_path
   end
 
+  def remove_companion
+    user = User.find params[:user_id]
+    destination = Destination.find params[:destination_id]
+    destination.users.delete user
+    redirect_to destination_path(destination)
+  end
+
   def edit
 
   end

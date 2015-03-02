@@ -18,6 +18,7 @@
   <ul>
   <% @current_companions.each do |companion| %>
     <li><%= "#{companion.first_name} #{companion.last_name}" %></li>
+    <%= button_to "Remove", remove_companion_path(@destination,companion), method: :delete, data: { confirm: "Remove #{companion.first_name}?"} %>
   <% end %>
   </ul>
 </p>
