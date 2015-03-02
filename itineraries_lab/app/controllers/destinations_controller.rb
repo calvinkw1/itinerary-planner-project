@@ -3,6 +3,7 @@ class DestinationsController < ApplicationController
   before_action :find_itinerary, only: [:new, :create, :add_destination, :destroy, :add_companion]
   before_action :find_destination, only: [:show, :edit, :update, :destroy, :add_companion]
   before_action :find_user, only: [:create]
+  before_action :confirm_creator, only: [:new, :create, :edit]
 
   def index
     @user = User.find session[:user_id]
@@ -80,26 +81,27 @@ class DestinationsController < ApplicationController
   end
 
   private
-   def destination_params
+  def destination_params
      params.require(:destination).permit(:name, :location, :start_date, :end_date)
-   end
-   def find_destination
+  end
+  def find_destination
     @destination = Destination.find params[:id]
-   end
-   def find_itinerary
+  end
+  def find_itinerary
     @itinerary = Itinerary.find(session[:itinerary_id]["id"])
-   end
-   def find_user
+  end
+  def find_user
     @user = User.find session[:user_id]
-   end
+  end
 
-   def user_params
+  def user_params
     params.require(:user).permit(:id, :first_name)
-   end
+  end
 
-  private
-  # def destination_params
-  #   params.require(:destination).permit(:name, :location, :start_date, :end_date)
-  # end
+  def confirm_creator
+    unless session[:creator_id] == session[:user_id]
+      redirect_to destination_path params[:id], notice: "Only the creator can make changes!"
+    end
+  end
   
 end
