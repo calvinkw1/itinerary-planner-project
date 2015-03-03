@@ -22,6 +22,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def twitter_create
+    # raise env["omniauth.auth"].to_yaml
+      user = User.from_omniauth env["omniauth.auth"]
+      session[:user_id] = user.id
+      redirect_to user_path user, notice: "Login Successful!"
+  end
+
   def login
     if params[:username].present? && params[:password].present?
       found_user = User.find_by_username params[:username]

@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   
   root 'site#index'
 
+  get '/auth/:provider/callback', to: 'users#twitter_create'
+
+  # get '/auth/failure', to: 'site#index'
+
   get '/login', to: "users#login", as: 'login'
 
   get '/signup', to: "users#signup", as: 'signup'

@@ -18,8 +18,12 @@
 
 <p>
   <%= submit_tag("Log in", class: "btn btn-primary") %>
+  OR
+  <%= link_to "Log in with Twitter", "/auth/twitter" %>
+
 </p>
 <% end %>
+
 
 <%= link_to "Don't have an account? Sign up here", signup_path, class: "shadow"%>
 </center>

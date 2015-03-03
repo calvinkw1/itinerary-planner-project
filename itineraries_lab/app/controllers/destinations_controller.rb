@@ -3,7 +3,7 @@ class DestinationsController < ApplicationController
   before_action :find_itinerary, only: [:new, :create, :add_destination, :destroy, :add_companion]
   before_action :find_destination, only: [:show, :edit, :update, :destroy, :add_companion]
   before_action :find_user, only: [:create]
-  before_action :confirm_creator, only: [:edit]
+  before_action :confirm_creator, only: [:edit, :destroy]
 
   def index
     @user = User.find session[:user_id]
